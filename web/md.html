@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+</head>
+<body>
+    <div id="show">
+    </div>
+    <textarea id="input">
+    </textarea>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        setInterval(show, 50);
+        function show(){
+            document.getElementById("show").innerHTML = marked.parse(document.getElementById("input").value);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sticky Notes</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: black;
+            font-family: 宋体;
+            background: url("images/主页.jfif");
+            background-size: auto;
+        }
+        .menu{
+            width: 200px;
+            background: mistyrose;
+            box-shadow: 1px 1px 5px #000;
+            display: none;
+            position: absolute;
+        }
+        .menu ul{
+            list-style: none;
+            font-size: 16px;
+            color: darkslategray;
+            text-indent: 20px;
+            line-height: 30px;
+        }
+        .menu ul li{
+            border-bottom: 1px solid #000000;
+            cursor: pointer;
+        }
+        .menu ul li:hover{
+            background: darkorange;
+            color: black;
+        }
+        .welcome{
+            left: 400px;
+            top: 300px;
+            font-size: 70px;
+            position: absolute;
+        }
+        .list{
+            left: 600px;
+            top:550px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!--菜单-->
+    <div class="menu">
+        <ul>
+            <li>新建</li>
+            <li>保存</li>
+            <li>关闭</li>
+        </ul>
+    </div>
+
+    <div class="welcome">
+        NewPaulWalker的便签
+    </div>
+
+    <div class="list">
+        <form action="NotesList" method="GET">
+            <input type="submit" style="width: 300px; height: 75px; font-size: 50px" value="Go home!">
+        </form>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        document.oncontextmenu = function (){
+            return false;
+        }
+        $(document).mousedown(function (e){
+            var key = e.which;
+            if(key==3){
+                var x = e.clientX;
+                var y = e.clientY;
+                $(".menu").show().css({left:x, top:y});
+            }else{
+                $(".menu").hide();
+            }
+        });
+    </script>
+</body>
+</html>

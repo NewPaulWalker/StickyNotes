@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes List</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: black;
+            font-family: 宋体;
+            background: url("images/索引.webp");
+            background-size: cover;
+        }
+        .new{
+            left: 100px;
+            top: 100px;
+            position: absolute;
+        }
+        .new:hover{
+            background: darkorange;
+            color: red;
+        }
+        .notes{
+            height: 200px;
+            background: url("images/便签纸2.jfif");
+            url("/notes")
+            background-size: cover;
+        }
+        .notes:hover{
+            background: darkorange;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 新建 -->
+    <div class="new">
+        <form action="Create" method="GET">
+            <input type="submit"
+                   style="border-radius: 25px; background-color: unset; border: none;
+                          width: 210px; height: 100px; color: black; font-size: 50px; font-family: 宋体"
+                   value="新建便签">
+        </form>
+    </div>
+    <!-- 已有便签 -->
+    <div class="notes" style="left: 500px; top: 100px; position: absolute">
+        <form action="Show" method="GET">
+            <br>
+            <br>
+            <input type="submit" name="note"
+                   style="border-radius: 25px; background-color: unset; border: none;
+                          width: 450px; height: 70px; color: black; font-size: 50px; font-family: 宋体"
+                   value="新建文本1">
+            <br>
+            <h2 style="text-indent: 30px">2021-12-13 18:23:10</h2>
+        </form>
+    </div>
+</body>
+</html>

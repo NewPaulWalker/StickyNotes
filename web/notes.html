@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: black;
+            font-family: 宋体;
+            background: url("images/便签纸1.jfif");
+            background-size: cover;
+        }
+        .menu{
+            width: 80px;
+            background: mistyrose;
+            box-shadow: 1px 1px 5px #000;
+            display: none;
+            position: absolute;
+        }
+        .menu form input{
+            font-size: 39px;
+            font-family: 楷体;
+            color: darkslategray;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .menu form input:hover{
+            background: darkorange;
+            color: black;
+        }
+        .back{
+            left: 50px;
+            top: 50px;
+            position: absolute;
+        }
+        .back:hover{
+            background: darkorange;
+            color: red;
+        }
+        .delete{
+            left: 400px;
+            top: 50px;
+            position: absolute;
+        }
+        .delete:hover{
+            background: darkorange;
+            color: red;
+        }
+        .text{
+            left: 260px;
+            top: 350px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- 菜单 -->
+    <div class="menu">
+        <form action="Open" method="GET">
+            <input type="submit" value="打开">
+        </form>
+        <form action="Save" method="GET">
+            <input type="submit" value="保存">
+        </form>
+        <form action="Quit" method="GET">
+            <input type="submit" value="关闭">
+        </form>
+    </div>
+    <!-- 返回 -->
+    <div class="back">
+        <form action="NotesList" method="GET">
+            <input type="submit"
+                   style="border-radius: 25px; background-color: unset;
+                   width: 210px; height: 100px; color: black; font-size: 50px; font-family: 宋体"
+                   value="返回">
+        </form>
+    </div>
+    <!-- 删除 -->
+    <div class="delete">
+        <form action="Delete" method="GET">
+            <input type="text" name="title" style="display: none" value="新建文本？">
+            <input type="submit"
+                   style="border-radius: 25px; background-color: unset;
+                   width: 210px; height: 100px; color: black; font-size: 50px; font-family: 宋体"
+                   value="删除">
+        </form>
+    </div>
+    <!-- 文本 -->
+    <div class="text">
+        <form action="Save" method="GET">
+            <h1>标题：</h1>
+            <input type="text" name="title"
+                   style="border: unset; line-height: 50px; width: 1000px;font-size: 50px; background-color: unset" value="新建文本？">
+            <br>
+            <br>
+            <input type="submit" style="width: 100px; height: 45px;font-size: 30px" value="保存">
+            <h1>内容：</h1>
+            <textarea name="content" id="content" style="width: 800px; height: 400px; margin: 0 auto; background-color: unset"></textarea>
+        </form>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        document.oncontextmenu = function (){
+            return false;
+        }
+        $(document).mousedown(function (e){
+            var key = e.which;
+            if(key==3){
+                var x = e.clientX;
+                var y = e.clientY;
+                $(".menu").show().css({left:x, top:y});
+            }else if(key==2){
+                $(".menu").hide();
+            }
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+        var ue = UE.getEditor("content");
+    </script>
+</body>
+</html>
